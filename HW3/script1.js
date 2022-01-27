@@ -4,24 +4,23 @@
 
 function prime_numbers() {
     var res = [];
-    var i = 0;
+    var arr = [...Array(100).keys()];
+    var i = 2;
     var j = 0;
-    var count = 0;
-    while (j < 100) {
+    var len = arr.length;
+    while (i <= 9) {
         count = 0;
-        i = 1;
-        while (i <= 100) {
-            if ((j % i == 0) && (i <= j)) {
-                count++;
+        while ((j < len)) {
+            if ((arr[j] % i == 0) && (i < arr[j])) {
+                arr.splice(j, 1);
+                len = arr.length;
             }
-            i++;
+            j++;
         }
-        if ((count == 2) || (count == 1)) {
-            res[res.length] = j;
-        }
-        j++;
+        j = 0;
+        i++;
     }
-    return res;
+    return arr;
 }
 
 var res = prime_numbers();
